@@ -1,6 +1,22 @@
-**Q: What pieces of information go into an EIP-712 domain separator, and what could go wrong if those were omitted?**
+### WEEK_1:
 
-**A:**
+**PermitSwap: [Contract](https://github.com/jocoders/permit-swap)** 
+
+**PermitSwap: [Frontend](https://github.com/jocoders/web3-permit-swap)** 
+
+---
+
+### WEEK_2:
+
+**Elliptic curve math: [Functions](https://github.com/jocoders/elliptic_curve_math)** 
+
+**Fuzzy Identitiy: [Solution](https://github.com/jocoders/capture-the-ether-foundry/blob/main/test/FuzzyIdentityChallenge.t.sol)** 
+
+---
+
+### WEEK_3:
+
+**Exercise 0: What pieces of information go into an EIP-712 domain separator, and what could go wrong if those were omitted?**
 
 An EIP-712 domain separator includes the following information:
 
@@ -13,42 +29,22 @@ An EIP-712 domain separator includes the following information:
 
 The domain separator is hashed and used in the final signed message to guarantee **uniqueness** and **security** of the signature.
 
----
-
-### 🔒 Why is this important?
+## Why is this important?
 
 If any of these fields are **omitted** or **wrong**:
 
-- 🔁 **Replay attacks** could happen – a signature meant for one chain or contract could be reused on another.
-- 🎭 **Spoofing** – A different contract might trick the user into signing something it shouldn’t.
-- 🔓 **Loss of context** – The signature would lose the binding to a specific app, version, or chain.
+- **Replay attacks** could happen – a signature meant for one chain or contract could be reused on another.
+- **Spoofing** – A different contract might trick the user into signing something it shouldn’t.
+- **Loss of context** – The signature would lose the binding to a specific app, version, or chain.
 
 This is why the **domain separator** acts like a “digital fingerprint” that ties the signature to:
 - a specific DApp,
 - a specific contract,
 - a specific blockchain.
 
----
+**Exercise 1: [Solution](https://github.com/jocoders/rare-skills-solidity-riddles/blob/main/test/DoubleTake.t.sol)**
+**Exercise 2: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise2.t.sol)**
+**Exercise 3: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise3.t.sol)**
+**Exercise 4: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise4.t.sol)**
 
-### ✅ Example from the EIP-712 spec:
 
-```solidity
-keccak256(
-  abi.encode(
-    keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"),
-    keccak256(bytes("Uniswap V2")),
-    keccak256(bytes("1")),
-    1,
-    address(this)
-  )
-)
-```
-
----
-
-### ✅ Real proof:
-
-- In **Uniswap's `permit()`** implementation, if you change the chainId or contract address, the signature becomes invalid.
-- In **EIP-2612**, the domain separator ensures that the permit is valid **only for that token**, on that chain.
-
----
