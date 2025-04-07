@@ -43,8 +43,11 @@ This is why the **domain separator** acts like a “digital fingerprint” that 
 - a specific blockchain.
 
 **Exercise 1: [Solution](https://github.com/jocoders/rare-skills-solidity-riddles/blob/main/test/DoubleTake.t.sol)**
+
 **Exercise 2: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise2.t.sol)**
+
 **Exercise 3: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise3.t.sol)**
+
 **Exercise 4: [Solution](https://github.com/jocoders/ecdsa_puzzles/blob/main/test/Week22Exercise4.t.sol)**
 
 
