@@ -20,12 +20,12 @@
 
 An EIP-712 domain separator includes the following information:
 
-1. **name** – Name of the DApp or protocol (e.g., "Uniswap V2").
-2. **version** – Version of the contract (e.g., "1").
-3. **chainId** – Chain ID (e.g., 1 for Ethereum Mainnet, 137 for Polygon).
-4. **verifyingContract** – Address of the contract that will verify the signature.
-5. *(Optional)* **salt** – Extra data to ensure uniqueness.
-6. *(Optional)* **extensions** – For advanced use cases like `EIP-5267`.
+1. **TYPE_HASH** - A keccak256 hash of the EIP-712 domain type definition. It defines the structure of the domain (e.g., EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)) and ensures that all domain data is interpreted in the correct format.
+2. **name** – Name of the DApp or protocol (e.g., "Uniswap V2").
+3. **version** – Version of the contract (e.g., "1").
+4. **chainId** – Chain ID (e.g., 1 for Ethereum Mainnet, 137 for Polygon).
+5. **address(this)** – The address of the current contract verifying the signature, ensuring the signature is bound to this specific smart contract.
+
 
 The domain separator is hashed and used in the final signed message to guarantee **uniqueness** and **security** of the signature.
 
